@@ -25,7 +25,6 @@ const PostDetail = () => {
       try {
         const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/posts/${id}`)
         setPost(response.data)
-        setCreatorID(response.data.creator)
       } catch (error) {
         setError(error)
       }
@@ -46,7 +45,7 @@ const PostDetail = () => {
       {post && <div className="container post__detail">
         <div className="post-detail__header">
           <PostAuthor authorID={post.creator} createdAt={post.createdAt}/>
-          {currentUser?.id == post?.creator && <div className="post-detail__buttons">
+          {currentUser?.id === post?.creator && <div className="post-detail__buttons">
             <Link to={`/posts/${post._id}/edit`} className='btn sm primary'>Edit</Link>
             <DeletePost postId={id}/>
           </div>}
