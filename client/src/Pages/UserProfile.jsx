@@ -7,7 +7,7 @@ import axios from 'axios'
 
 const UserProfile = () => {
   const {id} = useParams();
-  const [avatar, setAvatar] = React.useState('');
+  const [avatar, setAvatar] = React.useState(null);
   const [name, setName] = React.useState('');
   const [email, setEmail] = React.useState('');
   const [currentPassword, setCurrentPassword] = React.useState('');
@@ -83,7 +83,7 @@ const UserProfile = () => {
         <div className="profile__details">
           <div className="avatar__wrapper">
             <div className="profile__avatar">
-              <img src={`${process.env.REACT_APP_ASSETS_URL}/uploads/${avatar}`} alt=""/>
+              <img src={avatar ? URL.createObjectURL(avatar): `${process.env.REACT_APP_ASSETS_URL}/uploads/${avatar}`} alt=""/>
             </div>
 
             {/* Form to update avatar */}
