@@ -1,4 +1,4 @@
-import React,{useContext, useState, useEffect} from 'react'
+import {useContext, useState, useEffect} from 'react'
 import PostAuthor from '../components/PostAuthor.jsx'
 import { Link, useParams } from 'react-router-dom'
 import Loader from '../components/Loader'
@@ -11,7 +11,6 @@ const PostDetail = () => {
 
   const {id} = useParams();
   const [post , setPost] = useState(null)
-  const [creatorID , setCreatorID] = useState(null)
   const [error , setError] = useState(null)
   const [isLoading , setIsLoading] = useState(false)
 
