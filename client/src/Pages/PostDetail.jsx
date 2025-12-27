@@ -32,7 +32,7 @@ const PostDetail = () => {
       setIsLoading(false)
     }
     getPost();
-  }, [])
+  }, [id])
 
   if(isLoading){
     return <Loader/>

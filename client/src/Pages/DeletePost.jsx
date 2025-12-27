@@ -1,4 +1,4 @@
-import React,  {useContext, useEffect, useState} from 'react'
+import  {useContext, useEffect, useState} from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from '../context/userContext';
 import axios from 'axios'
@@ -20,14 +20,14 @@ const DeletePost = ({postId : id}) => {
       if(!token){
         navigate('/login')
       }
-    },[])
+    },[navigate, token])
 
     const removePost = async () => {
       setIsLoading(true)
       try {
         const response = await axios.delete(`${process.env.REACT_APP_BASE_URL}/posts/${id}`, {withCredentials: true, headers: {Authorization: `Bearer ${token}`}})
-        if(response.status == 200){
-          if(location.pathname == `/myposts/${currentUser.id}`){
+        if(response.status === 200){
+          if(location.pathname === `/myposts/${currentUser.id}`){
             navigate(0)
           }
           else{

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import {useEffect, useState} from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import ReactTimeAgo from 'react-time-ago'
@@ -22,7 +22,7 @@ const PostAuthor = ({authorID, createdAt}) => {
       }
     }
     getAuthor();
-  }, [])
+  }, [authorID])
 
   return (
     <Link to={`/posts/users/${authorID}`} className='post__author'>

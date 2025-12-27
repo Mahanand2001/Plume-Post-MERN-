@@ -28,7 +28,7 @@ const CreatePosts = () => {
     if(!token){
       navigate('/login')
     }
-  },[])
+  },[navigate, token])
 
   const editor = useEditor({
     extensions: [StarterKit],
@@ -48,7 +48,7 @@ const CreatePosts = () => {
 
     try {
       const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/posts`, postData, {withCredentials: true, headers: {Authorization: `Bearer ${token}`}})
-      if(response.status == 201){
+      if(response.status === 201){
         return navigate('/')
       }
 

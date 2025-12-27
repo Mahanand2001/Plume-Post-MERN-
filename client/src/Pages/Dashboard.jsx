@@ -1,5 +1,4 @@
 import React, {useState ,useContext, useEffect} from 'react'
-import { Dummy_POSTS } from '../data';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { UserContext } from '../context/userContext';
 import Loader from '../components/Loader'
@@ -9,7 +8,7 @@ import DeletePost from './DeletePost';
 
 const Dashboard = () => {
   const {id} = useParams();
-  const [posts, setPosts] = React.useState(Dummy_POSTS);
+  const [posts, setPosts] = React.useState([]);
 
   const navigate = useNavigate();
   const [isLoading,  setIsLoading] = useState(false)
@@ -23,7 +22,7 @@ const Dashboard = () => {
     if(!token){
       navigate('/login')
     }
-  },[])
+  },[navigate, token])
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -37,7 +36,7 @@ const Dashboard = () => {
         setIsLoading(false)
     }
     fetchPosts();
-  }, [])
+  }, [id, token])
   if(isLoading){
     return <Loader/>
   }

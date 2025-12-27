@@ -12,12 +12,7 @@ const Login = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-
-
   const {setCurrentUser} = useContext(UserContext);
-
-  
-
 
 
   const changeInputHandler = (e)=>{

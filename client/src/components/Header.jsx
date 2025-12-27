@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react'
+import React, {useContext} from 'react'
 import { Link } from 'react-router-dom'
 import PlumePostLogo from '../images/PlumePostLogo.png'
 import {AiOutlineClose} from 'react-icons/ai'

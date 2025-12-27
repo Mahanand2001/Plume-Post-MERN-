@@ -35,7 +35,7 @@ const EditPost = () => {
         if(!token){
           navigate('/login')
         }
-      },[])
+      },[navigate, token])
 
 
       useEffect(() => {
@@ -55,7 +55,7 @@ const EditPost = () => {
 
         }
         getPost();
-      }, []) 
+      }, [id, editor]) 
 
       const editPost= async (e) => {
           e.preventDefault();
@@ -67,7 +67,7 @@ const EditPost = () => {
 
           try {
             const response = await axios.patch(`${process.env.REACT_APP_BASE_URL}/posts/${id}`, postData, {withCredentials: true, headers: {Authorization: `Bearer ${token}`}})
-            if(response.status == 200){
+            if(response.status === 200){
               return navigate(`/`)
             }
 
