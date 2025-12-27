@@ -9,7 +9,7 @@ const PostItem = ({postID,category,title,description,authorID,thumbnail,createdA
     const shortTitle = title.length > 47 ? title.substring(0, 47) + '...' : title;
   return (
     <article className="post">
-        <Link to={`/posts/sadfs`}><div className="post__thumbnail">
+        <Link to={`/posts/${postID}`}><div className="post__thumbnail">
             <img src={`${process.env.REACT_APP_ASSETS_URL}/uploads/${thumbnail}`} alt={title} />
         </div></Link>
         <div className="post_content">
