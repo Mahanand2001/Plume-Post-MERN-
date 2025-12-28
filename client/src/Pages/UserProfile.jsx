@@ -7,7 +7,8 @@ import axios from 'axios'
 
 const UserProfile = () => {
   const {id} = useParams();
-  const [avatar, setAvatar] = React.useState(null);
+  const [avatar, setAvatar] = React.useState('');
+  const [avatarFile , setAvatarFile] = useState(null)
   const [name, setName] = React.useState('');
   const [email, setEmail] = React.useState('');
   const [currentPassword, setCurrentPassword] = React.useState('');
@@ -47,7 +48,7 @@ const UserProfile = () => {
       setIsAvatarTouched(false)
       try {
         const postData = new FormData();
-        postData.set('avatar', avatar)
+        postData.set('avatar', avatarFile)
         const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/users/change-avatar`, postData, {withCredentials:true, headers: {Authorization: `Bearer ${token}`}})
         setAvatar(response?.data.avatar)
       } catch (error) {
@@ -83,12 +84,12 @@ const UserProfile = () => {
         <div className="profile__details">
           <div className="avatar__wrapper">
             <div className="profile__avatar">
-              <img src={avatar ? URL.createObjectURL(avatar): `${process.env.REACT_APP_ASSETS_URL}/uploads/${avatar}`} alt=""/>
+              <img src={avatarFile ? URL.createObjectURL(avatarFile) : `${process.env.REACT_APP_ASSETS_URL}/uploads/${avatar}`} alt=""/>
             </div>
 
             {/* Form to update avatar */}
             <form className="avatar__form">
-              <input type="file"  name='avatar' id='avatar' onChange={e=> setAvatar(e.target.files[0])}/>
+              <input type="file"  name='avatar' id='avatar' onChange={e=> setAvatarFile(e.target.files[0])}/>
               <label htmlFor="avatar" onClick={() => setIsAvatarTouched(true)}><FaEdit /></label>
             </form>
             {isAvatarTouched && <button className='profile__avatar-btn' onClick={changeAvatarHandler}><PiCheckFatFill /></button>}
