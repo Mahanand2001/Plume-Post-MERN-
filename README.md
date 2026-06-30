@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🪶 Plume Post
 
 A full-stack MERN blog platform with JWT authentication, a rich-text editor, image uploads, and author profiles.
@@ -92,3 +93,4 @@ This project currently has no license specified. Feel free to open an issue if y
 ## Author
 
 **Mahanand2001** — [GitHub](https://github.com/Mahanand2001)
+=======
