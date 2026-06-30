@@ -16,7 +16,7 @@ const registerUser = async (req, res, next) => {
   try {
     const { name, email, password, password2 } = req.body;
     if (!name || !email || !password) {
-      return next(new HttpError("Fill in all fields."), 422);
+      return next(new HttpError("Kindly fill all details."), 422);
     } else {
       const newEmail = email.toLowerCase();
 
@@ -53,7 +53,7 @@ const loginUser = async (req, res, next) => {
   try {
     const { email, password } = req.body;
     if (!email || !password) {
-      return next(new HttpError("Fill in all details.", 422));
+      return next(new HttpError("Kindly fill all fields.", 422));
     }
     const newEmail = email.toLowerCase();
     const user = await User.findOne({ email: newEmail });
